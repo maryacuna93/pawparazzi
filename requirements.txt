@@ -1,11 +1,9 @@
 # Basic functionality
 numpy
 pandas
-opencv-python
-PIL
-collections
 # Machine Learning
 tensorflow
+opencv-python
 # API backend
 fastapi
 python-multipart
