@@ -1,8 +1,11 @@
+from pawparazzi.breed_predict.breed_prediction import predict_breed
+
 from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 
 import numpy as np
 import cv2
+import matplotlib.pyplot as plt
 
 app = FastAPI()
 
@@ -25,6 +28,6 @@ async def receive_image(img: UploadFile=File(...)):
     nparr = np.frombuffer(contents, np.uint8)
     cv2_img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
 
-    imsize = cv2_img.shape
+    id = predict_breed(cv2_img)
 
-    return {'size':imsize}
+    return {'prediction':int(id)}
