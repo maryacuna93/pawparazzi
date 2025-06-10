@@ -11,12 +11,11 @@ def load_model():
     model = tf.keras.models.load_model('models/model.keras') # type: ignore
     return model
 
-def predict_breed(image):
+def predict_breed(image, model):
     """
     Given an image return the prediction of the dog breed in given image
     """
     image = preprocess_image(image, 224)
-    model = load_model()
 
     prediction = model.predict(image)
 
