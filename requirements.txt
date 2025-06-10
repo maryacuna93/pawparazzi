@@ -1,0 +1,11 @@
+# Basic functionality
+numpy
+pandas
+# Machine Learning
+tensorflow
+opencv-python
+# API backend
+fastapi
+python-multipart
+requests
+uvicorn
