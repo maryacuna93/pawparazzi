@@ -1,6 +1,5 @@
 # Basic functionality
 numpy
-pandas
 # Machine Learning
 tensorflow
 opencv-python
