@@ -3,13 +3,19 @@ import tensorflow as tf
 
 import cv2
 
+from pawparazzi.params import *
+
 
 def load_model():
     """
     Loads the model for breed prediction
     """
-    model = tf.keras.models.load_model('models/model.keras') # type: ignore
+    model_name = "model.keras"
+    root_path = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+    path = os.path.join(root_path, "models", model_name)
+    model = tf.keras.models.load_model(path)
     return model
+
 
 def predict_breed(image, model):
     """
