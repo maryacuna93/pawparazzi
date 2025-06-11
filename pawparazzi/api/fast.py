@@ -6,7 +6,6 @@ from fastapi.middleware.cors import CORSMiddleware
 
 import numpy as np
 import cv2
-import matplotlib.pyplot as plt
 
 app = FastAPI()
 app.state.model = load_model()
