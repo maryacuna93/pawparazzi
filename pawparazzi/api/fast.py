@@ -1,4 +1,4 @@
-from pawparazzi.breed_predict.breed_prediction import predict_breed, load_model
+from pawparazzi.breed_predict.predict import predict_breed, load_model
 from pawparazzi.breed_predict.names import DOG_BREEDS
 
 from fastapi import FastAPI, UploadFile, File
