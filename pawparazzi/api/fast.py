@@ -1,4 +1,5 @@
 from pawparazzi.breed_predict.breed_prediction import predict_breed, load_model
+from pawparazzi.breed_predict.names import DOG_BREEDS
 
 from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
@@ -30,5 +31,6 @@ async def receive_image(img: UploadFile=File(...)):
     cv2_img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
 
     id = predict_breed(cv2_img, app.state.model)
+    breed = DOG_BREEDS[id]
 
-    return {'prediction':int(id)}
+    return {'prediction':breed}
