@@ -9,3 +9,5 @@ fastapi
 python-multipart
 requests
 uvicorn
+#Cloud
+google-cloud-storage

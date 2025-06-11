@@ -3,13 +3,20 @@ import tensorflow as tf
 
 import cv2
 
+from google.cloud import storage
+from pawparazzi.params import *
+
 
 def load_model():
     """
     Loads the model for breed prediction
     """
-    model = tf.keras.models.load_model('models/model.keras') # type: ignore
+    model_name = "model.keras"
+    root_path = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+    path = os.path.join(root_path, "models", model_name)
+    model = tf.keras.models.load_model(path)
     return model
+
 
 def predict_breed(image, model):
     """
@@ -31,3 +38,5 @@ def preprocess_image(image, img_size):
     resized_img = cv2.resize(image, (img_size, img_size))
     resized_img = tf.expand_dims(resized_img, 0)
     return resized_img
+
+# if __name__ == "__main__":
