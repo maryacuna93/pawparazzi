@@ -1,4 +1,4 @@
-from pawparazzi.breed_predict.breed_prediction import predict_breed, load_model
+from pawparazzi.breed_predict.predict import predict_breed, load_model
 from pawparazzi.breed_predict.names import DOG_BREEDS
 
 from fastapi import FastAPI, UploadFile, File
@@ -30,7 +30,9 @@ async def receive_image(img: UploadFile=File(...)):
     nparr = np.frombuffer(contents, np.uint8)
     cv2_img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
 
-    id = predict_breed(cv2_img, app.state.model)
-    breed = DOG_BREEDS[id]
+    scores, ids = predict_breed(cv2_img, app.state.model)
+    breeds = [DOG_BREEDS[i] for i in ids]
 
-    return {'prediction':breed}
+    prediction = {b:f"{s:.4f}" for b,s in zip(breeds, scores)}
+
+    return prediction

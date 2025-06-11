@@ -1,4 +1,5 @@
 import os
+import re
 
 def write_names(image_dir, write_dir):
     breed_names = os.listdir(image_dir)
@@ -9,7 +10,7 @@ def write_names(image_dir, write_dir):
             f.write(f"{name}\n")
 
 def clean_names(name):
-    name=name.split('-')[1]
+    name=re.sub('^n[0-9]+-', '', name)
     name=name.split("_")
     name=" ".join([word.capitalize() for word in name])
     return name
@@ -19,7 +20,7 @@ DOG_BREEDS=[
     "Japanese Spaniel",
     "Maltese Dog",
     "Pekinese",
-    "Shih",
+    "Shih-tzu",
     "Blenheim Spaniel",
     "Papillon",
     "Toy Terrier",
@@ -29,7 +30,7 @@ DOG_BREEDS=[
     "Beagle",
     "Bloodhound",
     "Bluetick",
-    "Black",
+    "Black-and-tan Coonhound",
     "Walker Hound",
     "English Foxhound",
     "Redbone",
@@ -52,7 +53,7 @@ DOG_BREEDS=[
     "Norfolk Terrier",
     "Norwich Terrier",
     "Yorkshire Terrier",
-    "Wire",
+    "Wire-haired Fox Terrier",
     "Lakeland Terrier",
     "Sealyham Terrier",
     "Airedale",
@@ -66,15 +67,15 @@ DOG_BREEDS=[
     "Scotch Terrier",
     "Tibetan Terrier",
     "Silky Terrier",
-    "Soft",
+    "Soft-coated Wheaten Terrier",
     "West Highland White Terrier",
     "Lhasa",
-    "Flat",
-    "Curly",
+    "Flat-coated Retriever",
+    "Curly-coated Retriever",
     "Golden Retriever",
     "Labrador Retriever",
     "Chesapeake Bay Retriever",
-    "German Short",
+    "German Short-haired Pointer",
     "Vizsla",
     "English Setter",
     "Irish Setter",
