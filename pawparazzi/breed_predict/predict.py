@@ -3,7 +3,6 @@ import tensorflow as tf
 
 import cv2
 
-from google.cloud import storage
 from pawparazzi.params import *
 
 
@@ -41,5 +40,3 @@ def preprocess_image(image, img_size):
     resized_img = cv2.resize(image, (img_size, img_size))
     resized_img = tf.expand_dims(resized_img, 0)
     return resized_img
-
-# if __name__ == "__main__":
