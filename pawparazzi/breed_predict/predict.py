@@ -25,7 +25,7 @@ def predict_breed(image, model):
 
     prediction = model.predict(image)
 
-    score = tf.nn.softmax(prediction[0])
+    score = prediction[0]
     top_10_scores, top_10_indices = tf.math.top_k(score,k=10)
     top_10_scores = top_10_scores.numpy()
     top_10_indices = top_10_indices.numpy()
