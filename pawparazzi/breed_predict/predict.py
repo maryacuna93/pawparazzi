@@ -10,7 +10,7 @@ def load_model():
     """
     Loads the model for breed prediction
     """
-    model_name = "model.keras"
+    model_name = os.getenv("MODEL_NAME")
     root_path = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
     path = os.path.join(root_path, "models", model_name)
     model = tf.keras.models.load_model(path)
@@ -25,7 +25,7 @@ def predict_breed(image, model):
 
     prediction = model.predict(image)
 
-    score = tf.nn.softmax(prediction[0])
+    score = prediction[0]
     top_10_scores, top_10_indices = tf.math.top_k(score,k=10)
     top_10_scores = top_10_scores.numpy()
     top_10_indices = top_10_indices.numpy()
