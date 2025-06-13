@@ -1,5 +1,5 @@
 from pawparazzi.breed_predict.predict import predict_breed, load_model
-from pawparazzi.breed_predict.names import DOG_BREEDS
+from pawparazzi.breed_predict.names import TSINGHUA_DOG_BREEDS
 
 from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
@@ -30,7 +30,7 @@ async def receive_image(img: UploadFile=File(...)):
     cv2_img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
 
     scores, ids = predict_breed(cv2_img, app.state.model)
-    breeds = [DOG_BREEDS[i] for i in ids]
+    breeds = [TSINGHUA_DOG_BREEDS[i] for i in ids]
 
     prediction = {b:f"{s:.4f}" for b,s in zip(breeds, scores)}
 
