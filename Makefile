@@ -42,7 +42,7 @@ docker_show_image_path:
 docker_build:
 	docker build \
 		--platform linux/amd64 \
-		--build-arg model=$(MODEL_NAME)
+		--build-arg model=$(MODEL_NAME) \
 		-t $(DOCKER_IMAGE_PATH):prod .
 
 docker_allow:
