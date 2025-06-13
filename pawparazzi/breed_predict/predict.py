@@ -10,7 +10,10 @@ def load_model():
     """
     Loads the model for breed prediction
     """
-    model_name = os.getenv("MODEL_NAME")
+    if os.getenv("IN_CONTAINER", False):
+        model_name = "model.keras"
+    else:
+        model_name = os.getenv("MODEL_NAME")
     root_path = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
     path = os.path.join(root_path, "models", model_name)
     model = tf.keras.models.load_model(path)

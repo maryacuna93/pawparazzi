@@ -10,8 +10,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 #Copy pawparazzi code
 COPY pawparazzi /pawparazzi
 
-#Copy the model
+#Copy the model and set the model name
 ARG model
+ENV IN_CONTAINER=True
 COPY models/${model} /models/model.keras
 
 #Execute the Uvicorn app
