@@ -37,14 +37,11 @@ DOCKER_REPO_NAME=<your docker repository name>
 DOCKER_LOCAL_PORT=8080
 
 #Google Cloud variables
-GOOGLE_CLOUD_PROJECT_ID=<your google cloud project id>
-GOOGLE_CLOUD_REGION=<your google cloud region>
-GAR_MEMORY=<memory for the container, e.g. 512Mi>
+GOOGLE_CLOUD_PROJECT_ID=<google cloud project id>
+GOOGLE_CLOUD_REGION=<google cloud region>
+GAR_MEMORY=<memory for the container, e.g. 4Gi>
 ```
-For running the API on Cloud Run, you will also need to set the following environment variables:
-```yaml
-IN_CONTAINER: "True"
-```
+For running the API on Cloud Run, there needs to be an `env.yaml`. See in [Deploying](#deploying) for more information.
 
 ## Model Section
 
@@ -80,6 +77,18 @@ This will create a Docker image named `pawparazzi` with the latest version of th
 ### Building the container
 
 ### Deploying
+Environment yaml:
+```yaml
+LOCAL_REGISTRY_PATH: "<models directory path>"
+MODEL_NAME: "<model file name>"
+
+GCP_PROJECT: "<google cloud project id>"
+GCP_REGION: "<google cloud project region>"
+
+DOCKER_IMAGE_NAME: "pawparazzi"
+DOCKER_REPO_NAME: "<docker repository name>"
+MEMORY: "<memory allocation, e.g. 4Gi>"
+```
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
