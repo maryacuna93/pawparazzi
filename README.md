@@ -4,7 +4,7 @@ Pawparazzi is a project backend to predict dog breeds from images.
 Building on the Stanford Dogs and the Tsinghua Dogs datasets, we built a vision
 model to classify the breeds of dogs in images submitted by users.
 This Repository is the backend of the
-[Pawparazzi](https://pawparazzi.streamlit.app/) web application.
+[Pawparazzi](https://pawparazzifront.streamlit.app/) web application.
 
 ## Table of contents
 
@@ -46,8 +46,10 @@ For running the API on Cloud Run, there needs to be an `env.yaml`. See in [Deplo
 
 The chosen Model archtecture is based on [EfficientNetV2](https://arxiv.org/abs/2104.00298) and was trained on a class
 balanced version of the Stanford Dogs and Tsinghua Dogs datasets. The notebook
-used to train the final model was `notebooks/<thenotebook.ipynb>`. The accuracy
-of the model on our test set was about 80%, with 97% accuracy within the top 5. The two datasets miss some prominent dog breeds.
+used to train the final model was
+`notebooks/efficientnetv2l-tsinghua-balanced-noteddy.ipynb`. The accuracy of
+the model on our test set was about 80%, with 97% accuracy within the top 5. The
+two datasets miss some prominent dog breeds.
 
 ## Local use
 
